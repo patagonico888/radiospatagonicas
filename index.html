@@ -8454,11 +8454,28 @@ function buscarRadio() {
 function filtrarProvincia(prov) {
     const searchInput = document.getElementById("searchInput");
     if (searchInput) searchInput.value = "";
+
     document.querySelectorAll(".filters button").forEach(b => b.classList.remove("activo"));
+
     const btn = document.querySelector('.filters button[onclick="filtrarProvincia(\'' + prov + '\')"]');
     if (btn) btn.classList.add("activo");
+
     document.querySelectorAll(".card").forEach(card => {
-        const coincide = (prov === "todas" || card.dataset.provincia === prov);
+
+        let coincide = false;
+
+        if (prov === "todas") {
+            coincide = true;
+
+        } else if (prov === "am") {
+            // Mostrar todas las emisoras AM
+            coincide = card.dataset.tipo === "am";
+
+        } else {
+            // Filtro normal por provincia
+            coincide = card.dataset.provincia === prov;
+        }
+
         card.style.display = coincide ? "block" : "none";
     });
 }
