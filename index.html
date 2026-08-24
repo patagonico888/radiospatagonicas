@@ -54,9 +54,33 @@
   object-position: center;
   padding: 8px; /* Espaciado de respiro interno */
 }
-        .tarjeta-radio img {
+      /* Contenedor de la tarjeta de la radio */
+.tarjeta-radio {
+  /* ... tu estilo de tarjeta (borde, fondo, etc) ... */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%; /* Ajusta según tu grilla */
+  aspect-ratio: 1 / 1; /* Forza a que la tarjeta sea cuadrada si lo deseas */
+}
+
+/* Tratamiento estricto para el logo */
+.tarjeta-radio img {
+  /* Define un área máxima RÍGIDA para el logo dentro de la tarjeta */
+  width: 80%; /* El logo no ocupará más del 80% del ancho de la tarjeta */
+  height: auto; /* Mantiene la proporción */
+  
+  /* Esto asegura que la imagen transparente se centre y no se estire */
+  object-fit: contain; 
+  object-position: center;
+
+  /* Formato WebP/PNG transparente necesita nitidez */
   image-rendering: -webkit-optimize-contrast;
   image-rendering: crisp-edges;
+  
+  /* Aire extra si no lo pusiste en la imagen */
+  padding: 10px; 
 }
         /* --- CONTADOR DE EMISORAS --- */
         .logo-contador {
