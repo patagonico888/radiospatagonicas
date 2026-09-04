@@ -3,292 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Radios Patagónicas</title>
+    <title>Radios Patagónicas | El Dial del Sur Argentino en Vivo</title>
 
-    <meta property="og:title" content="Radios Patagónicas" />
-    <meta property="og:description" content="Directorio y archivo digital de las emisoras de radio de la Patagonia. Dial en vivo, frecuencias y estado técnico." />
-    <meta property="og:image" content="https://patagonico888.github.io/radiospatagonicas/logo-radios-patagonicas.jpg" />
+    <!-- SEO BÁSICO MEJORADO -->
+    <meta name="description" content="Directorio y archivo digital de las emisoras de radio de la Patagonia argentina. Escuchá el dial en vivo, frecuencias AM/FM y estado técnico.">
+    <meta name="keywords" content="radios patagonia, radios argentinas, radio en vivo, neuquen, rio negro, chubut, santa cruz, tierra del fuego, am, fm">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- OPEN GRAPH CORREGIDO (Ahora apunta a radiospatagonicas, no a patagonico888) -->
+    <meta property="og:title" content="Radios Patagónicas | El Dial del Sur" />
+    <meta property="og:description" content="Directorio y archivo digital de las emisoras de radio de la Patagonia. Dial en vivo y frecuencias." />
+    <meta property="og:image" content="https://radiospatagonicas.github.io/logo-radios-patagonicas.jpg" />
     <meta property="og:image:alt" content="Logo de Radios Patagónicas" />
-    <meta property="og:url" content="https://patagonico888.github.io/radiospatagonicas/" />
+    <meta property="og:url" content="https://radiospatagonicas.github.io/" />
     <meta property="og:type" content="website" />
     <meta property="fb:app_id" content="123456789" />
     
+    <!-- GOOGLE ANALYTICS -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-MBCXYH14VT"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-MBCXYH14VT');
     </script>
+
     <style>
-        body { margin:0; font-family: 'Inter', sans-serif; background:#0a0a0a; color:#eee; display: flex; flex-direction: column; min-height: 100vh; }
+        /* --- BASE --- */
+        body { margin:0; font-family: 'Inter', system-ui, sans-serif; background:#0a0a0a; color:#eee; display: flex; flex-direction: column; min-height: 100vh; }
         
-        /* --- DISEÑO DE LOGO RADIOS PATAGÓNICAS (COMPACTADO) --- */
-        header { 
-            text-align:center; 
-            padding: 20px 15px; 
-            background: linear-gradient(180deg, #111 0%, #0a0a0a 100%); 
-            border-bottom: 1px solid #222; 
-        }
-        .logo-texto { 
-            font-size: 2rem; 
-            font-weight: 900; 
-            letter-spacing: -1px; 
-            color: #fff; 
-            margin: 0;
-            text-transform: uppercase;
-        }
-        .logo-sub { 
-            font-size: 1rem; 
-            color: #0077ff; /* Tu Azul Francia original */
-            font-weight: bold; 
-            margin-top: 5px; 
-            display: block;
-        }
+        /* --- HEADER --- */
+        header { text-align:center; padding: 20px 15px; background: linear-gradient(180deg, #111 0%, #0a0a0a 100%); border-bottom: 1px solid #222; }
+        .logo-texto { font-size: 2rem; font-weight: 900; letter-spacing: -1px; color: #fff; margin: 0; text-transform: uppercase; }
+        .logo-sub { font-size: 1rem; color: #0077ff; font-weight: bold; margin-top: 5px; display: block; }
         .parentesis { color: #444; font-weight: 300; }
-        .tarjeta-radio img {
-  width: 100%;
-  height: 120px; /* O la altura deseada en tu grilla */
-  object-fit: contain;
-  object-position: center;
-  padding: 8px; /* Espaciado de respiro interno */
-}
-      /* Contenedor de la tarjeta de la radio */
-.tarjeta-radio {
-  /* ... tu estilo de tarjeta (borde, fondo, etc) ... */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%; /* Ajusta según tu grilla */
-  aspect-ratio: 1 / 1; /* Forza a que la tarjeta sea cuadrada si lo deseas */
-}
-
-/* Tratamiento estricto para el logo */
-.tarjeta-radio img {
-  /* Define un área máxima RÍGIDA para el logo dentro de la tarjeta */
-  width: 80%; /* El logo no ocupará más del 80% del ancho de la tarjeta */
-  height: auto; /* Mantiene la proporción */
-  
-  /* Esto asegura que la imagen transparente se centre y no se estire */
-  object-fit: contain; 
-  object-position: center;
-
-  /* Formato WebP/PNG transparente necesita nitidez */
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
-  
-  /* Aire extra si no lo pusiste en la imagen */
-  padding: 10px; 
-}
-        /* --- CONTADOR DE EMISORAS --- */
-        .logo-contador {
-            display: inline-block;
-            font-size: 0.8rem;
-            background-color: #222;
-            color: #94a3b8;
-            padding: 3px 8px;
-            border-radius: 6px;
-            margin-top: 8px;
-            border: 1px solid #333;
-        }
+        .logo-contador { display: inline-block; font-size: 0.8rem; background-color: #222; color: #94a3b8; padding: 3px 8px; border-radius: 6px; margin-top: 8px; border: 1px solid #333; }
 
         /* --- REPRODUCTOR --- */
-        .now { 
-            text-align:center; 
-            padding:10px; 
-            background:#161616; 
-            color:#0077ff; /* Tu Azul Francia original */
-            font-size:13px; 
-            font-weight: bold; 
-            border-bottom: 1px solid #222; 
-        }
-        
         .player-container { position: sticky; top: 0; z-index: 100; background: #111; padding: 10px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        .now { text-align:center; padding:10px; background:#161616; color:#0077ff; font-size:13px; font-weight: bold; border-bottom: 1px solid #222; }
         .player { width:90%; margin:0 auto; }
         audio { width:100%; height: 40px; }
 
-        /* --- CARRUSEL COMPACTADO --- */
-        .slider-container {
-            width: 100%;
-            max-width: 1000px;
-            margin: 15px auto; 
-            position: relative;
-            overflow: hidden;
-            border-radius: 15px;
-            border: 1px solid #333;
-            background: #000;
-        }
-        .slider {
-            display: flex;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .slide {
-            min-width: 100%;
-            box-sizing: border-box;
-            background: #000;
-        }
-        .slide img {
-            width: 100%;
-            height: 180px; 
-            object-fit: contain; 
-            background: #000;
-            display: block;
-        }
-
+        /* --- CARRUSEL --- */
+        .slider-container { width: 100%; max-width: 1000px; margin: 15px auto; position: relative; overflow: hidden; border-radius: 15px; border: 1px solid #333; background: #000; }
+        .slider { display: flex; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+        .slide { min-width: 100%; box-sizing: border-box; background: #000; }
+        .slide img { width: 100%; height: 180px; object-fit: contain; background: #000; display: block; }
         .dots { text-align: center; padding: 10px; background: #0a0a0a; }
         .dot { height: 8px; width: 8px; margin: 0 4px; background-color: #333; border-radius: 50%; display: inline-block; transition: 0.3s; }
-        .dot.active { background-color: #0077ff; width: 20px; border-radius: 10px; } /* Tu Azul Francia original */
+        .dot.active { background-color: #0077ff; width: 20px; border-radius: 10px; }
 
-        /* --- PUBLICIDADES Y FILTROS --- */
+        /* --- PUBLICIDAD Y FILTROS --- */
         .ads-container { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 90%; margin: 15px auto; }
         .ad-box { background: #161616; padding: 15px; border-radius: 8px; border: 1px dashed #333; color: #555; text-decoration: none; text-align: center; font-size: 11px; }
-
         .filters { display:flex; overflow-x:auto; gap:8px; padding:10px 15px; scrollbar-width: none; }
-        .filters button { padding:8px 18px; border:none; border-radius:20px; background:#222; color:white; cursor: pointer; font-size: 13px; border: 1px solid #333; white-space: nowrap; }
+        .filters button { padding:8px 18px; border:none; border-radius:20px; background:#222; color:white; cursor: pointer; font-size: 13px; border: 1px solid #333; white-space: nowrap; transition: 0.2s; }
+        .filters button.activo { background: #0077ff; border-color: #0077ff; }
 
+        /* --- BÚSQUEDA --- */
         .search { width:90%; margin:10px auto; }
         .search input { width:100%; padding:15px; border-radius:12px; background: #1a1a1a; color: white; border: 1px solid #333; outline: none; box-sizing: border-box; font-size: 16px; }
 
         /* --- GRILLA Y TARJETAS --- */
         .grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap:15px; padding:15px; }
         .card { background:#161616; padding:22px; border-radius:18px; text-align:center; border: 1px solid #222; transition: 0.3s; }
-        .card.active { border-color: #0077ff; background: #1a1a1a; } /* Tu Azul Francia original */
+        .card.active { border-color: #0077ff; background: #1a1a1a; }
         
         .name { font-size:18px; font-weight: bold; margin-bottom: 4px; }
         .city { font-size:11px; color:#666; margin-bottom:18px; text-transform: uppercase; }
 
-        /* --- BOTÓN PLAY AZUL FRANCIA --- */
-        button.play { width:100%; padding:15px; border:none; border-radius:12px; background:#0077ff; color:#ffffff; cursor: pointer; font-weight: bold; transition: 0.3s; }
-        button.play.on { background: #ffffff !important; color: #000000 !important; } 
-
-        .share-link { display: inline-block; margin-top: 18px; font-size: 12px; color: #00ffcc; cursor: pointer; text-decoration: none; border: 1px solid #333; padding: 5px 10px; border-radius: 10px; }
-        
-        /* --- FOOTER INTEGRADO CON QR --- */
-        .footer-sitio {
-            background-color: #0d0d0d;
-            color: #666;
-            padding: 40px 20px 20px 20px;
-            margin-top: auto;
-            border-top: 1px solid #111;
-            font-size: 13px;
-        }
-        .footer-contenido {
-            max-width: 1000px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 25px;
-            text-align: left;
-        }
-        .footer-col {
-            flex: 1;
-            min-width: 200px;
-        }
-        .footer-col h3, .footer-col h4 {
-            color: #fff;
-            margin-top: 0;
-            font-size: 15px;
-        }
-        .footer-col p { margin: 5px 0; line-height: 1.4; }
-        
-        /* Estilos del QR */
-        .qr-contenedor {
+        /* --- LOGOS UNIFICADOS (Solución para TV/PC) --- */
+        .am-logo {
+            height: 90px;
             display: flex;
             align-items: center;
-            gap: 12px;
-            background-color: #161616;
+            justify-content: center;
+            margin-bottom: 15px;
+            background: #ffffff; /* Fondo blanco para que los PNG transparentes se vean bien */
+            border-radius: 12px;
             padding: 10px;
-            border-radius: 10px;
-            border: 1px solid #222;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
         }
-        .qr-contenedor img {
-            border: 3px solid #ffffff;
-            border-radius: 4px;
-            width: 70px;
-            height: 70px;
-        }
-        .qr-contenedor h5 {
-            color: #0077ff; /* Tu Azul Francia original */
-            margin: 0 0 3px 0;
-            font-size: 13px;
-        }
-        .qr-contenedor p {
-            margin: 0;
-            font-size: 11px;
-            color: #888;
+        .am-logo img {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            display: block;
         }
 
-        .footer-bottom {
-            text-align: center;
-            margin-top: 30px;
-            padding-top: 15px;
-            border-top: 1px solid #1a1a1a;
+        /* --- BOTONES --- */
+        button.play { width:100%; padding:15px; border:none; border-radius:12px; background:#0077ff; color:#ffffff; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        button.play.on { background: #ffffff !important; color: #000000 !important; } 
+        .share-link { display: inline-block; margin-top: 18px; font-size: 12px; color: #00ffcc; cursor: pointer; text-decoration: none; border: 1px solid #333; padding: 5px 10px; border-radius: 10px; }
+        
+        /* --- ESTILO ESPECIAL PARA RADIOS HISTÓRICAS (Agosto) --- */
+        .card.historica {
+            border: 1px dashed #8b7355;
+            background: linear-gradient(145deg, #1a1510, #161616);
         }
-        .btn-contacto { display: inline-block; margin-top: 10px; padding: 8px 16px; background: #222; color: #eee; text-decoration: none; border-radius: 8px; border: 1px solid #333; transition: 0.3s; }
-        .btn-contacto:hover { background: #333; }
-
-        /* --- BOTONES DE CONTACTO EN EL FOOTER --- */
-        .contacto-redes {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-top: 15px;
-            max-width: 220px;
-        }
-
-        /* Botón de Facebook (Azul oficial) */
-        .btn-facebook {
-            background-color: #1877f2 !important;
-            color: #ffffff !important;
-            border: 1px solid #166fe5 !important;
-            font-weight: bold;
-            text-align: center;
-            padding: 10px 15px;
-            border-radius: 8px;
-            text-decoration: none;
-            transition: 0.3s ease;
-        }
-        .btn-facebook:hover {
-            background-color: #166fe5 !important;
-            transform: translateY(-2px);
+        .card.historica .name { color: #d4c4a8; font-style: italic; }
+        .card.historica .play { display: none; } /* Oculta el play si no hay stream */
+        .card.historica::after {
+            content: "📻 Archivo Histórico / Señal de Ajuste";
+            display: block;
+            font-size: 0.8rem;
+            color: #a89f8a;
+            margin-top: 8px;
         }
 
-        /* Botón de WhatsApp (Verde oficial) */
-        .btn-whatsapp {
-            background-color: #25d366 !important;
-            color: #ffffff !important;
-            border: 1px solid #20ba5a !important;
-            font-weight: bold;
-            text-align: center;
-            padding: 10px 15px;
-            border-radius: 8px;
-            text-decoration: none;
-            transition: 0.3s ease;
-        }
-        .btn-whatsapp:hover {
-            background-color: #20ba5a !important;
-            transform: translateY(-2px);
-        }
-  .am-logo {
-    height: 90px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 15px;
-}
-
-.am-logo img {
-    max-width: 180px;
-    max-height: 75px;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-}
+        /* --- FOOTER --- */
+        .footer-sitio { background-color: #0d0d0d; color: #666; padding: 40px 20px 20px 20px; margin-top: auto; border-top: 1px solid #111; font-size: 13px; }
+        .footer-contenido { max-width: 1000px; margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 25px; text-align: left; }
+        .footer-col { flex: 1; min-width: 200px; }
+        .footer-col h3, .footer-col h4 { color: #fff; margin-top: 0; font-size: 15px; }
+        .qr-contenedor { display: flex; align-items: center; gap: 12px; background-color: #161616; padding: 10px; border-radius: 10px; border: 1px solid #222; }
+        .qr-contenedor img { border: 3px solid #ffffff; border-radius: 4px; width: 70px; height: 70px; }
+        .qr-contenedor h5 { color: #0077ff; margin: 0 0 3px 0; font-size: 13px; }
+        .qr-contenedor p { margin: 0; font-size: 11px; color: #888; }
+        .footer-bottom { text-align: center; margin-top: 30px; padding-top: 15px; border-top: 1px solid #1a1a1a; }
+        .contacto-redes { display: flex; flex-direction: column; gap: 10px; margin-top: 15px; max-width: 220px; }
+        .btn-contacto { display: inline-block; padding: 10px 15px; color: #ffffff !important; font-weight: bold; text-align: center; border-radius: 8px; text-decoration: none; transition: 0.3s ease; }
+        .btn-contacto:hover { transform: translateY(-2px); }
+        .btn-facebook { background-color: #1877f2 !important; border: 1px solid #166fe5 !important; }
+        .btn-whatsapp { background-color: #25d366 !important; border: 1px solid #20ba5a !important; }
     </style>
-
 </head>
         
 <body>
@@ -304,56 +145,51 @@
     <div class="player-container">
         <div class="now" id="nowPlaying">🎧 Seleccioná una radio para escuchar</div>
         <div class="player">
-            <audio id="player" controls autoplay></audio>
+            <audio id="player" controls></audio> <!-- Quité autoplay para evitar bloqueos del navegador -->
         </div>
     </div>
 
-<div class="slider-container">
-    <div class="slider" id="slider">
-        <div class="slide">
-            <img src="fm-carolina.jpg" alt="FM Carolina">
+    <div class="slider-container">
+        <div class="slider" id="slider">
+            <div class="slide"><img src="fm-carolina.jpg" alt="FM Carolina" loading="lazy"></div>
+            <div class="slide"><a href="https://wa.me/5493755596267" target="_blank"><img src="banner-drevanz-2000x240.png" alt="Drevanz" loading="lazy"></a></div>
+            <div class="slide"><img src="anunciaxtres.png" alt="Anuncia x Tres" class="recortar" loading="lazy"></div>
         </div>
-        
-        <div class="slide">
-            <a href="https://wa.me/5493755596267" target="_blank">
-                <img src="banner-drevanz-2000x240.png" alt="Drevanz">
-            </a>
-        </div>
-        
-        <div class="slide">
-            <img src="anunciaxtres.png" alt="Anuncia x Tres" class="recortar">
+        <div class="dots" id="dots">
+            <span class="dot active" onclick="showSlide(0)"></span>
+            <span class="dot" onclick="showSlide(1)"></span>
+            <span class="dot" onclick="showSlide(2)"></span>
         </div>
     </div>
 
-    <div class="dots" id="dots">
-        <span class="dot active"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
+    <div class="ads-container">
+        <div class="ad-box">📢 PUBLICIDAD DISPONIBLE</div>
+        <div class="ad-box">📢 PUBLICIDAD DISPONIBLE</div>
     </div>
-</div>
 
-<div class="ads-container">
-    <div class="ad-box">📢 PUBLICIDAD DISPONIBLE</div>
-    <div class="ad-box">📢 PUBLICIDAD DISPONIBLE</div>
-</div>
+    <!-- FILTROS UNIFICADOS (Provincias + Categorías) -->
+    <div class="filters">
+        <button class="activo" onclick="filtrarProvincia('todas', this)">Todas</button>
+        <button onclick="filtrarProvincia('rionegro', this)">Río Negro</button>
+        <button onclick="filtrarProvincia('neuquen', this)">Neuquén</button>
+        <button onclick="filtrarProvincia('chubut', this)">Chubut</button>
+        <button onclick="filtrarProvincia('santacruz', this)">Santa Cruz</button>
+        <button onclick="filtrarProvincia('tdf', this)">Tierra del Fuego</button>
+        <button onclick="filtrarProvincia('am', this)">Todas las AM</button>
+        <!-- NUEVO: Filtro por Categoría -->
+        <button onclick="filtrarCategoria('musical', this)">🎵 Musical</button>
+        <button onclick="filtrarCategoria('noticias', this)">📰 Noticias</button>
+        <button onclick="filtrarCategoria('historica', this)">📻 Históricas</button>
+    </div>
 
-<div class="filters">
-    <button onclick="filtrarProvincia('todas')">Todas</button>
-    <button onclick="filtrarProvincia('rionegro')">Río Negro</button>
-    <button onclick="filtrarProvincia('neuquen')">Neuquén</button>
-    <button onclick="filtrarProvincia('chubut')">Chubut</button>
-    <button onclick="filtrarProvincia('santacruz')">Santa Cruz</button>
-    <button onclick="filtrarProvincia('tdf')">Tierra del Fuego</button>
-    <button onclick="filtrarProvincia('am')">Todas las AM</button>
-</div>
+    <div class="search">
+        <!-- Cambiado a buscarRadioRapido para el debounce -->
+        <input type="text" id="searchInput" onkeyup="buscarRadioRapido()" placeholder="Buscar por nombre, frecuencia o ciudad...">
+    </div>
 
+    <div class="grid" id="radioGrid">
 
-<div class="search">
-    <input type="text" id="searchInput" onkeyup="buscarRadio()" placeholder="Buscar por nombre, frecuencia o ciudad...">
-</div>
-
-
-<div class="grid" id="radioGrid">
+    
 
     <div class="card" id="am550" data-provincia="neuquen" data-name="am 550 la primera nqn">
          <div class="am-logo">
@@ -10903,204 +10739,430 @@
     <div class="share-link" onclick="compartir('la2x4', 'La 2x4 Radio de Tango Buenos Aires')">🔗 Compartir</div>
 </div>
 
-
-
-
-
-
-
     
 </div>
 
-<footer class="footer-sitio">
-    <div class="footer-contenido">
+ <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radios Patagónicas | El Dial del Sur Argentino en Vivo</title>
+
+    <!-- SEO BÁSICO MEJORADO -->
+    <meta name="description" content="Directorio y archivo digital de las emisoras de radio de la Patagonia argentina. Escuchá el dial en vivo, frecuencias AM/FM y estado técnico.">
+    <meta name="keywords" content="radios patagonia, radios argentinas, radio en vivo, neuquen, rio negro, chubut, santa cruz, tierra del fuego, am, fm">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- OPEN GRAPH CORREGIDO (Ahora apunta a radiospatagonicas, no a patagonico888) -->
+    <meta property="og:title" content="Radios Patagónicas | El Dial del Sur" />
+    <meta property="og:description" content="Directorio y archivo digital de las emisoras de radio de la Patagonia. Dial en vivo y frecuencias." />
+    <meta property="og:image" content="https://radiospatagonicas.github.io/logo-radios-patagonicas.jpg" />
+    <meta property="og:image:alt" content="Logo de Radios Patagónicas" />
+    <meta property="og:url" content="https://radiospatagonicas.github.io/" />
+    <meta property="og:type" content="website" />
+    <meta property="fb:app_id" content="123456789" />
+    
+    <!-- GOOGLE ANALYTICS -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MBCXYH14VT"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-MBCXYH14VT');
+    </script>
+
+    <style>
+        /* --- BASE --- */
+        body { margin:0; font-family: 'Inter', system-ui, sans-serif; background:#0a0a0a; color:#eee; display: flex; flex-direction: column; min-height: 100vh; }
         
-        <div class="footer-col">
-            <h3>RADIOS PATAGÓNICAS</h3>
-            <p>El archivo digital de las voces y frecuencias del sur argentino.</p>
-            
-            <div class="contacto-redes">
-                <a href="https://www.facebook.com/radiospatagonicas" target="_blank" class="btn-contacto btn-facebook">
-                    📘 Seguinos en Facebook
-                </a>
-                
-                <a href="https://wa.me/5492990000000?text=Hola%20Radios%20Patagónicas!%20Te%20estoy%20escuchando..." target="_blank" class="btn-contacto btn-whatsapp">
-                    💬 WhatsApp 
-                </a>
+        /* --- HEADER --- */
+        header { text-align:center; padding: 20px 15px; background: linear-gradient(180deg, #111 0%, #0a0a0a 100%); border-bottom: 1px solid #222; }
+        .logo-texto { font-size: 2rem; font-weight: 900; letter-spacing: -1px; color: #fff; margin: 0; text-transform: uppercase; }
+        .logo-sub { font-size: 1rem; color: #0077ff; font-weight: bold; margin-top: 5px; display: block; }
+        .parentesis { color: #444; font-weight: 300; }
+        .logo-contador { display: inline-block; font-size: 0.8rem; background-color: #222; color: #94a3b8; padding: 3px 8px; border-radius: 6px; margin-top: 8px; border: 1px solid #333; }
+
+        /* --- REPRODUCTOR --- */
+        .player-container { position: sticky; top: 0; z-index: 100; background: #111; padding: 10px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        .now { text-align:center; padding:10px; background:#161616; color:#0077ff; font-size:13px; font-weight: bold; border-bottom: 1px solid #222; }
+        .player { width:90%; margin:0 auto; }
+        audio { width:100%; height: 40px; }
+
+        /* --- CARRUSEL --- */
+        .slider-container { width: 100%; max-width: 1000px; margin: 15px auto; position: relative; overflow: hidden; border-radius: 15px; border: 1px solid #333; background: #000; }
+        .slider { display: flex; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+        .slide { min-width: 100%; box-sizing: border-box; background: #000; }
+        .slide img { width: 100%; height: 180px; object-fit: contain; background: #000; display: block; }
+        .dots { text-align: center; padding: 10px; background: #0a0a0a; }
+        .dot { height: 8px; width: 8px; margin: 0 4px; background-color: #333; border-radius: 50%; display: inline-block; transition: 0.3s; }
+        .dot.active { background-color: #0077ff; width: 20px; border-radius: 10px; }
+
+        /* --- PUBLICIDAD Y FILTROS --- */
+        .ads-container { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 90%; margin: 15px auto; }
+        .ad-box { background: #161616; padding: 15px; border-radius: 8px; border: 1px dashed #333; color: #555; text-decoration: none; text-align: center; font-size: 11px; }
+        .filters { display:flex; overflow-x:auto; gap:8px; padding:10px 15px; scrollbar-width: none; }
+        .filters button { padding:8px 18px; border:none; border-radius:20px; background:#222; color:white; cursor: pointer; font-size: 13px; border: 1px solid #333; white-space: nowrap; transition: 0.2s; }
+        .filters button.activo { background: #0077ff; border-color: #0077ff; }
+
+        /* --- BÚSQUEDA --- */
+        .search { width:90%; margin:10px auto; }
+        .search input { width:100%; padding:15px; border-radius:12px; background: #1a1a1a; color: white; border: 1px solid #333; outline: none; box-sizing: border-box; font-size: 16px; }
+
+        /* --- GRILLA Y TARJETAS --- */
+        .grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap:15px; padding:15px; }
+        .card { background:#161616; padding:22px; border-radius:18px; text-align:center; border: 1px solid #222; transition: 0.3s; }
+        .card.active { border-color: #0077ff; background: #1a1a1a; }
+        
+        .name { font-size:18px; font-weight: bold; margin-bottom: 4px; }
+        .city { font-size:11px; color:#666; margin-bottom:18px; text-transform: uppercase; }
+
+        /* --- LOGOS UNIFICADOS (Solución para TV/PC) --- */
+        .am-logo {
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            background: #ffffff; /* Fondo blanco para que los PNG transparentes se vean bien */
+            border-radius: 12px;
+            padding: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+        .am-logo img {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            display: block;
+        }
+
+        /* --- BOTONES --- */
+        button.play { width:100%; padding:15px; border:none; border-radius:12px; background:#0077ff; color:#ffffff; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        button.play.on { background: #ffffff !important; color: #000000 !important; } 
+        .share-link { display: inline-block; margin-top: 18px; font-size: 12px; color: #00ffcc; cursor: pointer; text-decoration: none; border: 1px solid #333; padding: 5px 10px; border-radius: 10px; }
+        
+        /* --- ESTILO ESPECIAL PARA RADIOS HISTÓRICAS (Agosto) --- */
+        .card.historica {
+            border: 1px dashed #8b7355;
+            background: linear-gradient(145deg, #1a1510, #161616);
+        }
+        .card.historica .name { color: #d4c4a8; font-style: italic; }
+        .card.historica .play { display: none; } /* Oculta el play si no hay stream */
+        .card.historica::after {
+            content: "📻 Archivo Histórico / Señal de Ajuste";
+            display: block;
+            font-size: 0.8rem;
+            color: #a89f8a;
+            margin-top: 8px;
+        }
+
+        /* --- FOOTER --- */
+        .footer-sitio { background-color: #0d0d0d; color: #666; padding: 40px 20px 20px 20px; margin-top: auto; border-top: 1px solid #111; font-size: 13px; }
+        .footer-contenido { max-width: 1000px; margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 25px; text-align: left; }
+        .footer-col { flex: 1; min-width: 200px; }
+        .footer-col h3, .footer-col h4 { color: #fff; margin-top: 0; font-size: 15px; }
+        .qr-contenedor { display: flex; align-items: center; gap: 12px; background-color: #161616; padding: 10px; border-radius: 10px; border: 1px solid #222; }
+        .qr-contenedor img { border: 3px solid #ffffff; border-radius: 4px; width: 70px; height: 70px; }
+        .qr-contenedor h5 { color: #0077ff; margin: 0 0 3px 0; font-size: 13px; }
+        .qr-contenedor p { margin: 0; font-size: 11px; color: #888; }
+        .footer-bottom { text-align: center; margin-top: 30px; padding-top: 15px; border-top: 1px solid #1a1a1a; }
+        .contacto-redes { display: flex; flex-direction: column; gap: 10px; margin-top: 15px; max-width: 220px; }
+        .btn-contacto { display: inline-block; padding: 10px 15px; color: #ffffff !important; font-weight: bold; text-align: center; border-radius: 8px; text-decoration: none; transition: 0.3s ease; }
+        .btn-contacto:hover { transform: translateY(-2px); }
+        .btn-facebook { background-color: #1877f2 !important; border: 1px solid #166fe5 !important; }
+        .btn-whatsapp { background-color: #25d366 !important; border: 1px solid #20ba5a !important; }
+    </style>
+</head>
+        
+<body>
+
+    <header>     
+        <h1 class="logo-texto">
+            <span class="parentesis">(</span>RADIOS<span class="parentesis">)</span> PATAGÓNICAS
+        </h1>
+        <span class="logo-sub">EL DIAL DEL SUR ARGENTINO</span>
+        <span class="logo-contador" id="contadorEmisoras"></span>
+    </header>
+
+    <div class="player-container">
+        <div class="now" id="nowPlaying">🎧 Seleccioná una radio para escuchar</div>
+        <div class="player">
+            <audio id="player" controls></audio> <!-- Quité autoplay para evitar bloqueos del navegador -->
+        </div>
+    </div>
+
+    <div class="slider-container">
+        <div class="slider" id="slider">
+            <div class="slide"><img src="fm-carolina.jpg" alt="FM Carolina" loading="lazy"></div>
+            <div class="slide"><a href="https://wa.me/5493755596267" target="_blank"><img src="banner-drevanz-2000x240.png" alt="Drevanz" loading="lazy"></a></div>
+            <div class="slide"><img src="anunciaxtres.png" alt="Anuncia x Tres" class="recortar" loading="lazy"></div>
+        </div>
+        <div class="dots" id="dots">
+            <span class="dot active" onclick="showSlide(0)"></span>
+            <span class="dot" onclick="showSlide(1)"></span>
+            <span class="dot" onclick="showSlide(2)"></span>
+        </div>
+    </div>
+
+    <div class="ads-container">
+        <div class="ad-box">📢 PUBLICIDAD DISPONIBLE</div>
+        <div class="ad-box">📢 PUBLICIDAD DISPONIBLE</div>
+    </div>
+
+    <!-- FILTROS UNIFICADOS (Provincias + Categorías) -->
+    <div class="filters">
+        <button class="activo" onclick="filtrarProvincia('todas', this)">Todas</button>
+        <button onclick="filtrarProvincia('rionegro', this)">Río Negro</button>
+        <button onclick="filtrarProvincia('neuquen', this)">Neuquén</button>
+        <button onclick="filtrarProvincia('chubut', this)">Chubut</button>
+        <button onclick="filtrarProvincia('santacruz', this)">Santa Cruz</button>
+        <button onclick="filtrarProvincia('tdf', this)">Tierra del Fuego</button>
+        <button onclick="filtrarProvincia('am', this)">Todas las AM</button>
+        <!-- NUEVO: Filtro por Categoría -->
+        <button onclick="filtrarCategoria('musical', this)">🎵 Musical</button>
+        <button onclick="filtrarCategoria('noticias', this)">📰 Noticias</button>
+        <button onclick="filtrarCategoria('historica', this)">📻 Históricas</button>
+    </div>
+
+    <div class="search">
+        <!-- Cambiado a buscarRadioRapido para el debounce -->
+        <input type="text" id="searchInput" onkeyup="buscarRadioRapido()" placeholder="Buscar por nombre, frecuencia o ciudad...">
+    </div>
+
+    <div class="grid" id="radioGrid">
+
+        <!-- EJEMPLO 1: Tarjeta Normal (Tus 1.290 tarjetas actuales funcionan así, sin cambios) -->
+        <div class="card" id="am550" data-provincia="neuquen" data-name="am 550 la primera nqn">
+            <div class="am-logo">
+                <!-- NUEVO: loading="lazy" para que no pese al cargar la web -->
+                <img src="logos-am/lrg206.png" alt="AM 550 LA PRIMERA" loading="lazy">
             </div>
+            <div class="name">LRG 206 AM 550</div>
+            <div class="city">Neuquén</div>
+            <button class="play" onclick="playRadio(this, 'https://sonic.host-live.com:10851/stream')">▶ Escuchar</button>
+            <div class="share-link" onclick="compartir('am550', 'AM 550 La Primera')">🔗 Compartir</div>
         </div>
         
-        <div class="footer-col">
-            <h4>Señal de Ajuste</h4>
-            <p>muy pronto en <a href="https://t/" target="_blank" style="color: #0077ff; text-decoration: none; font-weight: bold;">t</a></p>
+        <!-- EJEMPLO 2: Tarjeta con NUEVA CATEGORÍA (Solo agregas data-categoria) -->
+        <div class="card" id="lu5" data-provincia="neuquen" data-categoria="noticias" data-name="am 600 LU 5 Neuquen nqn">
+            <div class="am-logo">
+                <img src="logos-am/lu5.png" alt="LU 5" loading="lazy">
+            </div>
+            <div class="name">LU 5 AM 600</div>
+            <div class="city">Neuquén</div>
+            <button class="play" onclick="playRadio(this, 'https://live.lu5am.com:8443/LU5?type=.mp3&_=1')">▶ Escuchar</button>
+            <div class="share-link" onclick="compartir('lu5', 'LU 5 AM 600 Neuquén')">🔗 Compartir</div>
         </div>
-        
-        <div class="footer-col qr-col">
-            <div class="qr-contenedor">
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://radiospatagonicas.github.io/" alt="QR Smart TV">
-                <div>
-                    <h5>¿Smart TV? 📺</h5>
-                    <p>Escaneá para transmitir la señal al televisor.</p>
+
+        <!-- EJEMPLO 3: Tarjeta HISTÓRICA (Para el mes de la radiodifusión) -->
+        <!-- Nota la clase extra "historica" en el div principal -->
+        <div class="card historica" id="radiohistorica1" data-provincia="rionegro" data-categoria="historica" data-name="radio historica roca"> 
+            <div class="am-logo">
+                <img src="logos-am/lu18.png" alt="Radio Histórica" loading="lazy">
+            </div>
+            <div class="name">Radio Ejemplo Histórica</div>  
+            <div class="city">General Roca (Fuera del aire)</div>   
+            <!-- Aquí puedes poner el MP3 de la señal distintiva en lugar del botón de play -->
+            <audio controls style="width: 100%; margin-top: 10px; height: 35px; border-radius: 8px;">
+                <source src="audio/senal-distintiva.mp3" type="audio/mpeg">
+                Tu navegador no soporta audio.
+            </audio>
+            <div class="share-link" onclick="compartir('radiohistorica1', 'Radio Histórica de Roca')">🔗 Compartir</div>
+        </div>
+
+    </div>
+
+    <footer class="footer-sitio">
+        <div class="footer-contenido">
+            <div class="footer-col">
+                <h3>RADIOS PATAGÓNICAS</h3>
+                <p>El archivo digital de las voces y frecuencias del sur argentino.</p>
+                <div class="contacto-redes">
+                    <a href="https://www.facebook.com/radiospatagonicas" target="_blank" class="btn-contacto btn-facebook">📘 Seguinos en Facebook</a>
+                    <a href="https://wa.me/5492990000000?text=Hola%20Radios%20Patagónicas!" target="_blank" class="btn-contacto btn-whatsapp">💬 WhatsApp</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Señal de Ajuste</h4>
+                <p>Muy pronto en <a href="https://t.me/" target="_blank" style="color: #0077ff; text-decoration: none; font-weight: bold;">Telegram</a></p>
+            </div>
+            <div class="footer-col qr-col">
+                <div class="qr-contenedor">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://radiospatagonicas.github.io/" alt="QR Smart TV" loading="lazy">
+                    <div>
+                        <h5>¿Smart TV? 📺</h5>
+                        <p>Escaneá para abrir la web en tu televisor.</p>
+                    </div>
                 </div>
             </div>
         </div>
-        
-    </div>
-    
-    <div class="footer-bottom">
-        <p>&copy; 2026 Radios Patagónicas - Todos los derechos reservados.</p>
-    </div>
-</footer>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Radios Patagónicas - Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
 <script>
- // --- Lógica del Slider ---
-let currentSlide = 0;
+    // --- 1. LÓGICA DEL SLIDER ---
+    let currentSlide = 0;
+    function showSlide(index) {
+        const slider = document.getElementById("slider");
+        const slides = document.querySelectorAll(".slide");
+        const dots = document.querySelectorAll(".dot");
+        if (!slider || slides.length === 0) return;
 
-function showSlide(index) {
-    const slider = document.getElementById("slider");
-    const slides = document.querySelectorAll(".slide");
-    const dots = document.querySelectorAll(".dot");
+        currentSlide = index >= slides.length ? 0 : (index < 0 ? slides.length - 1 : index);
+        slider.style.transform = `translateX(-${currentSlide * 100}%)`;
 
-    if (!slider || slides.length === 0) return;
-
-    // Ajuste de índice circular
-    if (index >= slides.length) {
-        currentSlide = 0;
-    } else if (index < 0) {
-        currentSlide = slides.length - 1;
-    } else {
-        currentSlide = index;
+        dots.forEach(dot => dot.classList.remove("active"));
+        if (dots[currentSlide]) dots[currentSlide].classList.add("active");
     }
+    setInterval(() => showSlide(currentSlide + 1), 5000);
 
-    // CORRECCIÓN: Uso de backticks (`) para el template literal
-    slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+    // --- 2. LÓGICA DE LA RADIO (Con manejo de errores) ---
+    const player = document.getElementById("player");
+    const now = document.getElementById("nowPlaying");
 
-    // Actualizar puntos (dots)
-    dots.forEach(dot => dot.classList.remove("active"));
-    if (dots[currentSlide]) {
-        dots[currentSlide].classList.add("active");
-    }
-}
+    function playRadio(btn, url) {
+        const mismaRadio = player.src === url || player.src.includes(url);
 
-// Auto-play del slider cada 5 segundos
-setInterval(() => {
-    showSlide(currentSlide + 1);
-}, 5000);
+        if (mismaRadio && !player.paused) {
+            player.pause();
+            player.src = ""; 
+            resetUI();
+            now.innerText = "🎧 Seleccioná una radio para escuchar";
+            return;
+        }
 
-
-// --- Lógica de la Radio ---
-const player = document.getElementById("player");
-const now = document.getElementById("nowPlaying");
-
-function playRadio(btn, url) {
-    // Verificamos si es la misma radio comparando la URL
-    const mismaRadio = player.src === url || player.src.includes(url);
-
-    if (mismaRadio && !player.paused) {
-        // Si está sonando y clickeamos de nuevo: Pausar
-        player.pause();
-        // Opcional: limpiar el src para detener el buffer
-        player.src = ""; 
         resetUI();
-        now.innerText = "🎧 Seleccioná una radio para escuchar";
-        return;
+        player.src = url;
+        player.play().catch(error => {
+            console.error("Error al reproducir:", error);
+            now.innerText = "⚠️ Error: Emisora offline o formato no soportado";
+        });
+
+        btn.classList.add("on");
+        btn.innerText = "⏸ Sonando...";
+        btn.parentElement.classList.add("active");
+        
+        const radioName = btn.parentElement.querySelector(".name").innerText;
+        now.innerText = "📻 Sonando: " + radioName;
     }
 
-    // Resetear visualmente todos los botones y cards
-    resetUI();
-
-    // Configurar y reproducir nueva radio
-    player.src = url;
-    player.play().catch(error => console.error("Error al reproducir:", error));
-
-    // Actualizar UI de la radio actual
-    btn.classList.add("on");
-    btn.innerText = "⏸ Sonando...";
-    btn.parentElement.classList.add("active");
-    
-    const radioName = btn.parentElement.querySelector(".name").innerText;
-    now.innerText = "📻 Sonando: " + radioName;
-}
-
-// Función auxiliar para limpiar la interfaz
-function resetUI() {
-    document.querySelectorAll(".play").forEach(p => {
-        p.classList.remove("on");
-        p.innerText = "▶ Escuchar";
+    // Manejo de errores de stream (si se cae la radio)
+    player.addEventListener("error", () => {
+        resetUI();
+        now.innerText = "⚠️ La emisora no está disponible en este momento.";
     });
-    document.querySelectorAll(".card").forEach(c => {
-        c.classList.remove("active");
-    });
-}
 
-// --- Filtros y Búsqueda ---
-function buscarRadio() {
-    const input = document.getElementById("searchInput").value.toLowerCase();
-    document.querySelectorAll(".filters button").forEach(b => b.classList.remove("activo"));
-    document.querySelectorAll(".card").forEach(card => {
-        const nombre = card.getAttribute("data-name").toLowerCase();
-        const ciudadEl = card.querySelector(".city");
-        const ciudad = ciudadEl ? ciudadEl.innerText.toLowerCase() : "";
-        card.style.display = (nombre.includes(input) || ciudad.includes(input)) ? "block" : "none";
-    });
-}
-
-function filtrarProvincia(prov) {
-    const searchInput = document.getElementById("searchInput");
-    if (searchInput) searchInput.value = "";
-
-    document.querySelectorAll(".filters button").forEach(b => b.classList.remove("activo"));
-
-    const btn = document.querySelector('.filters button[onclick="filtrarProvincia(\'' + prov + '\')"]');
-    if (btn) btn.classList.add("activo");
-
-    document.querySelectorAll(".card").forEach(card => {
-
-        let coincide = false;
-
-        if (prov === "todas") {
-            coincide = true;
-
-        } else if (prov === "am") {
-            // Mostrar todas las emisoras AM
-            coincide = card.dataset.tipo === "am";
-
-        } else {
-            // Filtro normal por provincia
-            coincide = card.dataset.provincia === prov;
-        }
-
-        card.style.display = (nombre.includes(input)) ? "" : "none";
-    });
-}
-
-// --- Compartir ---
-function compartir(id, nombre) {
-    const url = `${window.location.origin}${window.location.pathname}?radio=${id}`;
-    const texto = encodeURIComponent(`📻 Escuchá ${nombre} en Radios Patagónicas: ${url}`);
-    window.open(`https://api.whatsapp.com/send?text=${texto}`, "_blank");
-}
-
-// --- Eventos Globales ---
-const total = document.querySelectorAll(".card").length;
-    const contador = document.getElementById("contadorEmisoras");
-    if (contador) contador.innerText = total + " emisoras en el directorio";
     player.addEventListener("pause", () => {
-    resetUI();
-    now.innerText = "⏸️ Reproducción pausada";
-});
+        resetUI();
+        now.innerText = "⏸️ Reproducción pausada";
+    });
 
-// Manejo de compartir mediante URL al cargar la página
-window.addEventListener("load", () => {
-    const params = new URLSearchParams(window.location.search);
-    const radioId = params.get("radio");
-    if (radioId) {
-        const card = document.getElementById(radioId);
-        if (card) {
-            card.scrollIntoView({ behavior: "smooth", block: "center" });
-            card.classList.add("active");
+    function resetUI() {
+        document.querySelectorAll(".play").forEach(p => {
+            p.classList.remove("on");
+            p.innerText = "▶ Escuchar";
+        });
+        document.querySelectorAll(".card").forEach(c => c.classList.remove("active"));
+    }
+
+    // --- 3. BÚSQUEDA RÁPIDA (DEBOUNCE) ---
+    // Esto evita que se trabe al escribir rápido
+    let timeoutBusqueda;
+    function buscarRadioRapido() {
+        clearTimeout(timeoutBusqueda);
+        timeoutBusqueda = setTimeout(() => {
+            const input = document.getElementById("searchInput").value.toLowerCase().trim();
+            document.querySelectorAll(".filters button").forEach(b => b.classList.remove("activo"));
+            
+            document.querySelectorAll(".card").forEach(card => {
+                const nombre = card.getAttribute("data-name")?.toLowerCase() || "";
+                const ciudad = card.querySelector(".city")?.innerText.toLowerCase() || "";
+                
+                // "" restaura el display original del CSS (grid), "none" lo oculta
+                const mostrar = nombre.includes(input) || ciudad.includes(input);
+                card.style.display = mostrar ? "" : "none"; 
+            });
+        }, 150); // Espera 150ms después de que dejes de escribir
+    }
+
+    // --- 4. FILTRO POR PROVINCIA (Bug corregido) ---
+    function filtrarProvincia(prov, btnElement) {
+        document.getElementById("searchInput").value = "";
+        document.querySelectorAll(".filters button").forEach(b => b.classList.remove("activo"));
+        if (btnElement) btnElement.classList.add("activo");
+
+        document.querySelectorAll(".card").forEach(card => {
+            let coincide = false;
+            if (prov === "todas") {
+                coincide = true;
+            } else if (prov === "am") {
+                coincide = card.dataset.tipo === "am" || card.getAttribute("data-name").includes("am");
+            } else {
+                coincide = card.dataset.provincia === prov;
+            }
+            // CORRECCIÓN CRÍTICA: Usar "" en lugar de "block" para no romper el grid
+            card.style.display = coincide ? "" : "none";
+        });
+    }
+
+    // --- 5. NUEVO: FILTRO POR CATEGORÍA ---
+    function filtrarCategoria(categoria, btnElement) {
+        document.getElementById("searchInput").value = "";
+        document.querySelectorAll(".filters button").forEach(b => b.classList.remove("activo"));
+        if (btnElement) btnElement.classList.add("activo");
+
+        document.querySelectorAll(".card").forEach(card => {
+            // Si no tiene data-categoria, se asume "generalista" y se muestra en "todas"
+            const cat = card.getAttribute("data-categoria") || "generalista"; 
+            
+            if (categoria === "todas" || cat === categoria) {
+                card.style.display = "";
+            } else {
+                card.style.display = "none";
+            }
+        });
+    }
+
+    // --- 6. COMPARTIR ---
+    function compartir(id, nombre) {
+        const url = `${window.location.origin}${window.location.pathname}?radio=${id}`;
+        const texto = `📻 Escuchá ${nombre} en Radios Patagónicas: ${url}`;
+        
+        // Intenta usar el menú nativo del celular (WhatsApp, Telegram, Copiar, etc.)
+        if (navigator.share) {
+            navigator.share({ title: nombre, text: texto, url: url }).catch(() => {
+                window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(texto)}`, "_blank");
+            });
+        } else {
+            window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(texto)}`, "_blank");
         }
     }
-});   
+
+    // --- 7. EVENTOS GLOBALES ---
+    window.addEventListener("load", () => {
+        // Contador
+        const total = document.querySelectorAll(".card").length;
+        const contador = document.getElementById("contadorEmisoras");
+        if (contador) contador.innerText = total + " emisoras en el directorio";
+
+        // Scroll automático si viene por enlace compartido
+        const params = new URLSearchParams(window.location.search);
+        const radioId = params.get("radio");
+        if (radioId) {
+            const card = document.getElementById(radioId);
+            if (card) {
+                setTimeout(() => {
+                    card.scrollIntoView({ behavior: "smooth", block: "center" });
+                    card.classList.add("active");
+                }, 500);
+            }
+        }
+    });   
 </script>
 </body>
-</html>
+</html>   
+
