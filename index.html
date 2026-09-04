@@ -11069,7 +11069,7 @@ function filtrarProvincia(prov) {
             coincide = card.dataset.provincia === prov;
         }
 
-        card.style.display = coincide ? "block" : "none";
+        card.style.display = (nombre.includes(input)) ? "" : "none";
     });
 }
 
