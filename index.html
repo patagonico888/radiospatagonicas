@@ -11073,24 +11073,35 @@
 
     // --- 3. BÚSQUEDA RÁPIDA (DEBOUNCE) ---
     // Esto evita que se trabe al escribir rápido
-    let timeoutBusqueda;
-    function buscarRadioRapido() {
-        clearTimeout(timeoutBusqueda);
-        timeoutBusqueda = setTimeout(() => {
-            const input = document.getElementById("searchInput").value.toLowerCase().trim();
-            document.querySelectorAll(".filters button").forEach(b => b.classList.remove("activo"));
+   let timeoutBusqueda;
+function buscarRadioRapido() {
+    clearTimeout(timeoutBusqueda);
+    timeoutBusqueda = setTimeout(() => {
+        const input = document.getElementById("searchInput").value.toLowerCase().trim();
+        const cards = document.querySelectorAll(".card");
+        
+        // Quitar estado activo de los filtros
+        const botones = document.querySelectorAll(".filters button");
+        for (let i = 0; i < botones.length; i++) {
+            botones[i].classList.remove("activo");
+        }
+        
+        // Bucle for clásico (mucho más rápido que forEach para +1000 elementos)
+        for (let i = 0; i < cards.length; i++) {
+            const card = cards[i];
+            // dataset.name es más rápido que getAttribute
+            const nombre = card.dataset.name ? card.dataset.name.toLowerCase() : "";
+            const ciudadEl = card.querySelector(".city");
+            const ciudad = ciudadEl ? ciudadEl.textContent.toLowerCase() : "";
             
-            document.querySelectorAll(".card").forEach(card => {
-                const nombre = card.getAttribute("data-name")?.toLowerCase() || "";
-                const ciudad = card.querySelector(".city")?.innerText.toLowerCase() || "";
-                
-                // "" restaura el display original del CSS (grid), "none" lo oculta
-                const mostrar = nombre.includes(input) || ciudad.includes(input);
-                card.style.display = mostrar ? "" : "none"; 
-            });
-        }, 150); // Espera 150ms después de que dejes de escribir
-    }
-
+            if (nombre.includes(input) || ciudad.includes(input)) {
+                card.style.display = ""; // Restaura el grid original
+            } else {
+                card.style.display = "none";
+            }
+        }
+    }, 200); // 200ms de espera para suavidad total
+}
     // --- 4. FILTRO POR PROVINCIA (Bug corregido) ---
     function filtrarProvincia(prov, btnElement) {
         document.getElementById("searchInput").value = "";
