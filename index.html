@@ -11141,19 +11141,46 @@ function buscarRadioRapido() {
     }
 
     // --- 6. COMPARTIR ---
-    function compartir(id, nombre) {
-        const url = `${window.location.origin}${window.location.pathname}?radio=${id}`;
-        const texto = `📻 Escuchá ${nombre} en Radios Patagónicas: ${url}`;
-        
-        // Intenta usar el menú nativo del celular (WhatsApp, Telegram, Copiar, etc.)
-        if (navigator.share) {
-            navigator.share({ title: nombre, text: texto, url: url }).catch(() => {
-                window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(texto)}`, "_blank");
-            });
-        } else {
+   function compartir(id, nombre) {
+    const url = `${window.location.origin}${window.location.pathname}?radio=${id}`;
+    const texto = `📻 Escuchá ${nombre} en vivo en Radios Patagónicas: ${url}`;
+    
+    // 1. Intentamos usar el menú nativo del celular (WhatsApp, Telegram, etc.)
+    if (navigator.share) {
+        navigator.share({ 
+            title: nombre, 
+            text: `Escuchá ${nombre} en vivo`, 
+            url: url 
+        }).catch(() => {
+            // Si el usuario cancela el menú nativo, copiamos al portapapeles
+            copiarAlPortapapeles(url, nombre);
+        });
+    } else {
+        // 2. Si es una PC o navegador antiguo, copiamos directamente y abrimos WhatsApp Web
+        copiarAlPortapapeles(url, nombre);
+        setTimeout(() => {
             window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(texto)}`, "_blank");
-        }
+        }, 800);
     }
+}
+
+// Función auxiliar para copiar el enlace específico de la radio
+function copiarAlPortapapeles(url, nombre) {
+    navigator.clipboard.writeText(url).then(() => {
+        // Pequeña notificación visual temporal
+        const now = document.getElementById("nowPlaying");
+        const textoOriginal = now.innerText;
+        now.innerText = `✅ ¡Enlace de ${nombre} copiado al portapapeles!`;
+        now.style.color = "#00ffcc";
+        
+        setTimeout(() => {
+            now.innerText = textoOriginal;
+            now.style.color = "#0077ff";
+        }, 2500);
+    }).catch(err => {
+        console.error("Error al copiar: ", err);
+    });
+}
 
     // --- 7. EVENTOS GLOBALES ---
     window.addEventListener("load", () => {
