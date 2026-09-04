@@ -74,25 +74,27 @@
         .city { font-size:11px; color:#666; margin-bottom:18px; text-transform: uppercase; }
 
         /* --- LOGOS UNIFICADOS (Solución para TV/PC) --- */
-        .am-logo {
-            height: 90px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 15px;
-            background: #ffffff; /* Fondo blanco para que los PNG transparentes se vean bien */
-            border-radius: 12px;
-            padding: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-        }
-        .am-logo img {
-            max-width: 100%;
-            max-height: 100%;
-            width: auto;
-            height: auto;
-            object-fit: contain;
-            display: block;
-        }
+        /* --- LOGOS UNIFICADOS (Corregido para fondos transparentes) --- */
+.am-logo {
+    height: 100px; /* Un poco más de altura para logos pequeños */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    background: #1a1a1a; /* Fondo oscuro: hace que los logos blancos resalten */
+    border: 1px solid #333; /* Borde sutil que enmarca cualquier logo */
+    border-radius: 12px;
+    padding: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+.am-logo img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain; /* Mantiene la proporción original sin deformar */
+    display: block;
+}
 
         /* --- BOTONES --- */
         button.play { width:100%; padding:15px; border:none; border-radius:12px; background:#0077ff; color:#ffffff; cursor: pointer; font-weight: bold; transition: 0.3s; }
