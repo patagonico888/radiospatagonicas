@@ -11182,24 +11182,55 @@ function buscarRadioRapido() {
     }, 200); // 200ms de espera para suavidad total
 }
     // --- 4. FILTRO POR PROVINCIA (Bug corregido) ---
-    function filtrarProvincia(prov, btnElement) {
-        document.getElementById("searchInput").value = "";
-        document.querySelectorAll(".filters button").forEach(b => b.classList.remove("activo"));
-        if (btnElement) btnElement.classList.add("activo");
-
-        document.querySelectorAll(".card").forEach(card => {
-            let coincide = false;
-            if (prov === "todas") {
-                coincide = true;
-            } else if (prov === "am") {
-                coincide = card.dataset.tipo === "am" || card.getAttribute("data-name").includes("am");
-            } else {
-                coincide = card.dataset.provincia === prov;
-            }
-            // CORRECCIÓN CRÍTICA: Usar "" en lugar de "block" para no romper el grid
-            card.style.display = coincide ? "" : "none";
-        });
+  function filtrarProvincia(prov, btnElement) {
+    // 1. Limpiar buscador de texto
+    document.getElementById("searchInput").value = "";
+    
+    // 2. Actualizar estado visual de los botones
+    const botones = document.querySelectorAll(".filters button");
+    for (let i = 0; i < botones.length; i++) {
+        botones[i].classList.remove("activo");
     }
+    if (btnElement) btnElement.classList.add("activo");
+
+    // 3. Filtrar las tarjetas
+    const cards = document.querySelectorAll(".card");
+
+    for (let i = 0; i < cards.length; i++) {
+        const card = cards[i];
+        let coincide = false;
+
+        if (prov === "todas") {
+            coincide = true;
+
+        } else if (prov === "am") {
+            // --- LÓGICA ROBUSTA PARA DETECTAR AMs ---
+            const tipo = card.dataset.tipo; // Por si ya le agregaste este atributo
+            const nombreData = (card.dataset.name || "").toLowerCase();
+            const nombreVisible = (card.querySelector(".name")?.innerText || "").toLowerCase();
+            
+            // Es AM si: 
+            // a) Tiene el atributo explícito data-tipo="am"
+            // b) El nombre contiene " am " (con espacios, para no caer en "Campana")
+            // c) El nombre empieza con "am " (ej: "am 550")
+            // d) El nombre termina en " am"
+            if (tipo === "am") {
+                coincide = true;
+            } else if (nombreData.includes(" am ") || nombreData.startsWith("am ") || nombreData.endsWith(" am")) {
+                coincide = true;
+            } else if (nombreVisible.includes(" am ") || nombreVisible.startsWith("am ") || nombreVisible.endsWith(" am")) {
+                coincide = true;
+            }
+
+        } else {
+            // Filtro normal por provincia
+            coincide = card.dataset.provincia === prov;
+        }
+
+        // "" restaura el grid original, "none" oculta. El orden NUNCA se altera.
+        card.style.display = coincide ? "" : "none";
+    }
+}
 
     // --- 5. NUEVO: FILTRO POR CATEGORÍA ---
     function filtrarCategoria(categoria, btnElement) {
