@@ -95,7 +95,16 @@
     object-fit: contain; /* Mantiene la proporción original sin deformar */
     display: block;
 }
-
+.radio-logo {
+  /* ... tus otros estilos (width, height, border-radius, etc.) ... */
+  
+  /* ESTO INVIERTE LOS COLORES: Negro -> Blanco, Blanco -> Negro */
+  filter: invert(1); 
+  
+  /* Opcional: si quieres que las letras no sean negras puras, sino grises o azules: */
+  /* filter: invert(1) sepia(1) saturate(5) hue-rotate(180deg); */
+}
+    
         /* --- BOTONES --- */
         button.play { width:100%; padding:15px; border:none; border-radius:12px; background:#0077ff; color:#ffffff; cursor: pointer; font-weight: bold; transition: 0.3s; }
         button.play.on { background: #ffffff !important; color: #000000 !important; } 
@@ -132,16 +141,7 @@
         .btn-facebook { background-color: #1877f2 !important; border: 1px solid #166fe5 !important; }
         .btn-whatsapp { background-color: #25d366 !important; border: 1px solid #20ba5a !important; }
     </style>
-.radio-logo {
-  /* ... tus otros estilos (width, height, border-radius, etc.) ... */
-  
-  /* ESTO INVIERTE LOS COLORES: Negro -> Blanco, Blanco -> Negro */
-  filter: invert(1); 
-  
-  /* Opcional: si quieres que las letras no sean negras puras, sino grises o azules: */
-  /* filter: invert(1) sepia(1) saturate(5) hue-rotate(180deg); */
-}
-    
+
 </head>
     
     
